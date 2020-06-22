@@ -1,4 +1,4 @@
-# Asus Vivobook X510UA-BQ490
+# Asus Vivobook X507UA
 
 Catalina 10.15.5 (Clover) and 10.15.5 (OpenCore) 
 
