@@ -3,7 +3,6 @@
 Catalina 10.15.5 (Clover) and 10.15.5 (OpenCore) 
 
 ## System specification
-
 1. Name:           Asus Vivobook X507UA
 2. CPU:            Intel Core i3-7020U
 3. Graphics:       Intel UHD Graphics 620 
@@ -35,31 +34,6 @@ Catalina 10.15.5 (Clover) and 10.15.5 (OpenCore)
 1. Use MaciASL to save ACPI/additional/SSDT-PS2.dsl with the .aml extension in Patched folder.
 2. Reboot.
 - Optional: If you have a non-macOS USB keyboard, uncommenting the code in SSDT-PS2.dsl will swap left-cmd and left-alt. Install and configure Karabiner-Elements to switch back left-cmd and left-alt. This result in the same mapping in your PS2 keyboard and USB keyboard.
-
-## Replace XOSI patch
-Pick one of the below two patches.
-### Insert _OSI for "Darwin"
-1. Delete ACPI/Patched/SSDT-XOSI.aml.
-2. Use MaciASL to save ACPI/replacement/SSDT-_OSI-XINI.dsl with the .aml extension in Patched folder.
-3. Delete the _OSI and OSID patch in config.plist/ACPI/DSDT/Patches and copy OSYS patch from /replacement/config-_OSI-XINI.plist/ACPI/DSDT/Patches to config.plist.
-4. Reboot.
-### Assign OSYS "Windows 2015" value
-1. Delete ACPI/Patched/SSDT-XOSI.aml.
-2. Use MaciASL to save ACPI/replacement/SSDT-OSYS.dsl with the .aml extension in Patched folder.
-3. Reboot.
-- In my opinion, SSDT-OSYS.dsl is safer than SSDT-_OSI-XINI.dsl.
-
-## Unlock MSR 0xE2 (CFG Lock)
-- Note: You need to know which BIOS version matches your laptop model. Otherwise, there may be a permanent damage to your laptop.
-1. Follow [Dortania's guide](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/extras/msr-lock).
-2. The offset will be at 0x527 if your BIOS version is 309.
-
-## When you think you are done
-
-1. Update Clover, kexts, and efi files, but make sure to delete VoodooInput.kext inside VoodooPS2Controller.kext.
-2. Backup your /L*/E* by copying them to the system EFI partition and/or installation USB EFI partition.
-
-## Other things
 
 1. OpenCore
     - Load CC from /L*/E*
